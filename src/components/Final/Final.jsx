@@ -1,22 +1,33 @@
 import { useState } from "react";
-import StudentsData from "./data.js";
+import acceptedStudentsData from "./data.js";
 
 function App() {
   const [nationalId, setNationalId] = useState("");
   const [result, setResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const checkAcceptance = () => {
+    setError(null);
     setIsLoading(true);
 
     setTimeout(() => {
-      if (StudentsData.includes(nationalId)) {
-        setResult("تبریک میگم شما در آموزشگاه ورودی قبول شدین 😍");
+      if (!/^\d{10}$/.test(nationalId)) {
+        setError("فرمت کد ملی وارد شده صحیح نیست.");
+      } else if (acceptedStudentsData[nationalId]) {
+        const studentName = acceptedStudentsData[nationalId];
+        setResult(
+          <p className='text-lg font-semibold my-6'>
+            تبریک میگم{" "}
+            <span className='text-green-600'>{studentName} عزیز!</span>
+            {" "}شما در آموزشگاه ورودی قبول شدین 😍
+          </p>
+        );
       } else {
         setResult("متاسفم دوست من 🥲 شما قبول نشدین");
       }
       setIsLoading(false);
-    }, 3000); // شبیه‌سازی یک تاخیر ۳ ثانیه‌ای برای نمایش وضعیت لودینگ
+    }, 1000);
   };
 
   return (
@@ -24,12 +35,19 @@ function App() {
       <div>
         <img src='https://www.uniref.ir/media/lo/1782.webp' alt='' />
       </div>
-      <h1 className='mb-8 mt-3'>سلام! به سامانه مشاهده وضعیت دانشگاه هاتف خوش آمدید</h1>
-      <label htmlFor='nationalId' className='block mb-2 items-end'>
+      <h1 className='mb-12'>سلام! به سامانه مشاهده وضعیت دانشگاه هاتف خوش آمدید</h1>
+      <label htmlFor='nationalId' className='block mb-4'>
         لطفا کد ملی خود را وارد کنید{" "}
       </label>
-      <input type='text' id='nationalId' value={nationalId} onChange={(e) => setNationalId(e.target.value)} className='border p-2 rounded-md w-5/6' />
-      <button onClick={checkAcceptance} className='bg-blue-500 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md m-4 w-5/6'>
+      <input
+        type='text'
+        id='nationalId'
+        value={nationalId}
+        onChange={(e) => setNationalId(e.target.value)}
+        className='outline-slate-800/30 border p-3 rounded-md w-5/6'
+      />
+      {error && <p className='text-red-500'>{error}</p>}
+      <button onClick={checkAcceptance} className='bg-blue-500 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md m-4 w-5/6 transition duration-300'>
         <div className="flex justify-center gap-4">
           {isLoading ? (
             <span>
@@ -53,9 +71,7 @@ function App() {
           در حال بررسی...
         </div>
       ) : (
-        <p id='result' className='text-lg font-semibold my-6'>
-          {result}
-        </p>
+        result
       )}
     </div>
   );

@@ -1,8 +1,8 @@
 
-const StudentsData = {
+const acceptedStudentsData = {
   "3611907677": "سینا بیگی",
   "3611902255": "سارینا زارعی",
   
 };
 
-export default StudentsData;
+export default acceptedStudentsData ;
