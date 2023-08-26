@@ -29,7 +29,7 @@ function App() {
   };
 
   return (
-    <div className='lg:w-2/6 w-full container mx-auto my-12 lg:my-2 flex flex-col justify-center items-center lg:border lg:border-slate-700/40 rounded-xl'>
+    <div className='bg-white shadow-lg lg:w-2/6 w-full container mx-auto my-12 lg:my-2 flex flex-col justify-center items-center  rounded-xl'>
       <div className='w-full flex justify-center py-8'>
         <img src='https://s6.uupload.ir/files/شسیشسیشسیش_9s1y.png' alt='' />
       </div>
