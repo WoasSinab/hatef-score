@@ -17,12 +17,12 @@ function App() {
       } else if (acceptedStudentsData[nationalId]) {
         const studentName = acceptedStudentsData[nationalId];
         setResult(
-          <p className='text-center font-semibold my-6'>
+          <p className='text-center font-semibold my-6 px-4'>
             تبریک میگم <span className='text-green-600'>{studentName} عزیز!</span> شما در آموزشگاه ورودی قبول شدین 😍
           </p>
         );
       } else {
-        setResult(<p className='text-center font-semibold my-6'>متاسفم دوست من 🥲 شما قبول نشدین</p>);
+        setResult(<p className='text-center font-semibold my-6 px-4'>متاسفم دوست من 🥲 شما قبول نشدین</p>);
       }
       setIsLoading(false);
     }, 1000);
