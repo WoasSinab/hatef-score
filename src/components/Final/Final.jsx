@@ -33,7 +33,7 @@ function App() {
       <div className='w-2/4 md:w-2/6 lg:w-3/6'>
         <img src='https://www.uniref.ir/media/lo/1782.webp' alt='' />
       </div>
-      <h1 className='mb-12 text-sm md:text-base lg:text-base px-6 text-center text-slate-800'>سلام! به سامانه مشاهده نتایج دانشگاه هاتف خوش آمدید</h1>
+      <h1 className='mb-12 text-base md:text-lg lg:text-lg px-6 text-center text-slate-800'>سلام! به سامانه مشاهده نتایج دانشگاه هاتف خوش آمدید</h1>
       <label htmlFor='nationalId' className='block mb-4 text-slate-500 text-sm md:text-base lg:text-base'>
         لطفا کد ملی خود را وارد کنید{" "}
       </label>
