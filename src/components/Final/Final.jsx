@@ -7,6 +7,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const persianNumber = (number) => {
+    const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+    return String(number)
+      .split("")
+      .map((char) => (/\d/.test(char) ? persianDigits[parseInt(char)] : char))
+      .join("");
+  };
+
   const checkAcceptance = () => {
     setError(null);
     setIsLoading(true);
@@ -37,7 +45,7 @@ function App() {
       <label htmlFor='nationalId' className='block mb-4 text-slate-500 text-sm md:text-base lg:text-base'>
         لطفا کد ملی خود را وارد کنید{" "}
       </label>
-      <input type='text' id='nationalId' value={nationalId} onChange={(e) => setNationalId(e.target.value)} className='outline-slate-600 border border-slate-500 p-3 rounded-md w-5/6' />
+      <input type='text' id='nationalId' value={nationalId} onChange={(e) => setNationalId(e.target.value)} className='outline-slate-600 border border-slate-500 p-3 rounded-md w-5/6' style={{ direction: "rtl" }} />
       {error && <p className='text-red-500'>{error}</p>}
       <button onClick={checkAcceptance} className='bg-blue-500 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md m-4 w-5/6 transition duration-300'>
         <div className='flex justify-center gap-4'>
